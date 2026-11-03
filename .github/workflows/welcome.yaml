@@ -1,0 +1,17 @@
+name: My First GitHub Actions Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display welcome message
+        run: echo "Welcome to GitHub Actions!"
+
+      - name: Display project message
+        run: echo "My first automation is running successfully!"
