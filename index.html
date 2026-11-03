@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Actions Playground</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        #count {
+            font-size: 35px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to GitHub Actions!</h1>
+
+        <p>My first DevOps automation project.</p>
+
+        <h2>Interactive Counter</h2>
+
+        <p id="count">0</p>
+
+        <button onclick="increaseCount()">
+            Increase Counter
+        </button>
+
+        <button onclick="resetCount()">
+            Reset Counter
+        </button>
+
+        <p id="message">Waiting for your action...</p>
+    </div>
+
+    <script>
+        let counter = 0;
+
+        function increaseCount() {
+            counter++;
+            document.getElementById("count").innerText = counter;
+            document.getElementById("message").innerText =
+                "You increased the counter!";
+        }
+
+        function resetCount() {
+            counter = 0;
+            document.getElementById("count").innerText = counter;
+            document.getElementById("message").innerText =
+                "Counter reset!";
+        }
+    </script>
+
+</body>
+</html>
