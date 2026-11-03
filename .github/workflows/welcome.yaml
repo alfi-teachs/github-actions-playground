@@ -15,3 +15,12 @@ jobs:
 
       - name: Display project message
         run: echo "My first automation is running successfully!"
+
+      - name: Check runner operating system
+        run: uname -a
+
+      - name: Check current directory
+        run: pwd
+
+      - name: List project files
+        run: ls -la  
