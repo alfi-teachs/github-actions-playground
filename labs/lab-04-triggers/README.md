@@ -199,70 +199,187 @@ Branch: main
 
 Important: `workflow_dispatch` is configured under the `on` section. It is not a job or a step. The `Display event name` step prints its value when you manually start the workflow.
 
-## Step 11: Test the Pull Request Trigger
+## Step 11: Practical Exercise – Create a Feature Branch
 
-1. Open Git Bash in the project directory.
-2. Create a new branch:
+In this exercise, we create a separate branch to test the `pull_request` trigger.
+
+Open Git Bash and navigate to the project directory:
+
+```bash
+cd ~/OneDrive/Desktop/lab/github-actions-playground
+```
+
+Create a new branch:
 
 ```bash
 git checkout -b feature/test-pull-request
 ```
 
-3. Make a change to a file and save it.
-4. Add and commit the changes:
+Verify the branch:
+
+```bash
+git branch
+```
+
+Expected output:
+
+```text
+* feature/test-pull-request
+  main
+```
+
+## Step 12: Create a Test File
+
+Create a new file to simulate a code change:
+
+```bash
+echo "Testing GitHub Actions pull request trigger" > pull-request-test.txt
+```
+
+Check the repository status:
+
+```bash
+git status
+```
+
+The new file should appear under Untracked files.
+
+## Step 13: Stage and Commit Changes
+
+Stage all changes:
 
 ```bash
 git add .
+```
+
+Verify:
+
+```bash
+git status
+```
+
+Commit the changes:
+
+```bash
 git commit -m "Test pull request trigger"
 ```
 
-5. Push the new branch:
+## Step 14: Push the Feature Branch to GitHub
+
+Push the newly created branch:
 
 ```bash
 git push -u origin feature/test-pull-request
 ```
 
-6. Open your GitHub repository.
-7. Create a pull request from `feature/test-pull-request` into `main`.
-8. Click **Create pull request**.
-9. Open the **Actions** tab.
-10. Check the latest workflow run and its job logs.
+Explanation:
 
-Expected event name:
+- `git push` – Uploads local commits to GitHub.
+- `-u` – Sets the upstream tracking branch.
+- `origin` – Name of the remote repository.
+- `feature/test-pull-request` – Branch being pushed.
+
+## Step 15: Create a Pull Request on GitHub
+
+1. Open the GitHub repository.
+2. Click the **Pull requests** tab.
+3. Click **New pull request**.
+4. Select the base branch as `main`.
+5. Select the compare branch as `feature/test-pull-request`.
+6. Review the changed files.
+7. Click **Create pull request**.
+
+Branch comparison:
+
+| Field | Branch |
+|---|---|
+| Base | `main` |
+| Compare | `feature/test-pull-request` |
+
+## Step 16: Verify the Pull Request Workflow
+
+1. Open the **Actions** tab.
+2. Select **Trigger Demo Workflow**.
+3. Open the latest workflow run.
+4. Click the `trigger-demo` job.
+5. Expand the **Display event name** step.
+
+Expected output:
 
 ```text
 Event: pull_request
 ```
 
-## Step 12: Compare the Three Triggers
+This confirms that the pull request trigger executed successfully.
 
-| Trigger | When does it run? |
-|---|---|
-| `push` | When code is pushed to the specified branch |
-| `pull_request` | When a pull request targets the specified branch |
-| `workflow_dispatch` | When a user manually starts the workflow |
+## Step 17: Merge the Pull Request
 
-## Step 13: Important Points to Remember
+After reviewing the changes and checking that all required checks passed:
 
-1. A workflow trigger is an event that starts a workflow.
-2. Triggers are configured under the `on` section.
-3. Multiple triggers can be configured in one workflow.
-4. `push` and `pull_request` are event-based triggers.
-5. `workflow_dispatch` enables manual execution.
-6. `GITHUB_EVENT_NAME` displays which event started the workflow.
-7. `GITHUB_REF_NAME` displays the branch or reference name.
-8. Workflow files must be stored inside `.github/workflows/`.
+1. Return to the Pull Request page.
+2. Click **Merge pull request**.
+3. Click **Confirm merge**.
+4. Verify that the pull request is marked as merged.
 
-## Step 14: Lab Completion Checklist
+Important: Merging a pull request updates the target branch (`main`). This can also trigger workflows configured with a `push` event.
 
-- [x] Understood workflow triggers.
-- [x] Configured the push trigger.
-- [x] Configured the pull request trigger.
-- [x] Configured the workflow dispatch trigger.
-- [x] Created the trigger workflow YAML file.
-- [x] Committed and pushed the workflow.
-- [x] Tested the push trigger.
-- [x] Tested the manual trigger.
-- [ ] Tested the pull request trigger practically.
+## Step 18: Synchronize the Local Main Branch
 
-**Lab 04 – GitHub Actions Triggers**
+After merging, switch to your local main branch:
+
+```bash
+git checkout main
+```
+
+Download the latest changes from GitHub:
+
+```bash
+git pull origin main
+```
+
+Verify the repository:
+
+```bash
+git status
+```
+
+Expected result:
+
+```text
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+## Step 19: Final Verification
+
+Check the Actions logs and confirm that the event name is:
+
+```text
+Event: pull_request
+```
+
+Also verify the push and manual trigger outputs:
+
+```text
+Event: push
+```
+
+```text
+Event: workflow_dispatch
+```
+
+## Step 20: Lab Completion Checklist
+
+- [x] Created a feature branch.
+- [x] Created a test file.
+- [x] Staged and committed changes.
+- [x] Pushed the feature branch to GitHub.
+- [x] Created a pull request targeting main.
+- [x] Verified the pull request workflow.
+- [x] Merged the pull request.
+- [x] Synchronized the local main branch.
+- [x] Verified all three workflow triggers.
+
+**Lab 04 – GitHub Actions Triggers: Completed**
