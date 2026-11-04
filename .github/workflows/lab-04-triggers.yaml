@@ -1,4 +1,5 @@
 name: Trigger Demo Workflow
+
 on:
   push:
     branches:
@@ -22,7 +23,7 @@ jobs:
         run: echo "The workflow was triggered successfully!"
 
       - name: Display event name
-        run: echo "Event: $GITHUB_EVENT_NAME"
+        run: 'echo "Event: $GITHUB_EVENT_NAME"'
 
       - name: Display branch name
-        run: echo "Branch: $GITHUB_REF_NAME"
+        run: 'echo "Branch: $GITHUB_REF_NAME"'
