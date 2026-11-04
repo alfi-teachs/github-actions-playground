@@ -13,6 +13,9 @@ jobs:
       - name: Display welcome message
         run: echo "Welcome to GitHub Actions!"
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Display project message
         run: echo "My first automation is running successfully!"
 
