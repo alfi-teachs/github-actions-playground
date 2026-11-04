@@ -263,6 +263,6 @@ Event: pull_request
 - [x] Committed and pushed the workflow.
 - [x] Tested the push trigger.
 - [x] Tested the manual trigger.
-- [ ] Tested the pull request trigger practically.
+- [x] Tested the pull request trigger practically.
 
 **Lab 04 – GitHub Actions Triggers**
