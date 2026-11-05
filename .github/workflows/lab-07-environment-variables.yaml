@@ -1,0 +1,23 @@
+name: Environment Variables Demo
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  environment-variables-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: set environment variables
+        run: |
+          echo "APP_ENV=Development" >> $GITHUB_ENV
+
+      - name: Read application environment
+        run: 'echo "Application Environment: $APP_ENV"'
