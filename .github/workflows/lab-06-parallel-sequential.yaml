@@ -1,0 +1,27 @@
+name: Parallel and Sequential Jobs Demo
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build application
+        run: echo "Building application..."
+
+      - name: Build completed
+        run: echo "Build completed successfully!"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: echo "Running application tests..."
+
+      - name: Tests completed
+        run: echo "Tests completed successfully!"
