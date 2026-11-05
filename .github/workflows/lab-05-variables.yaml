@@ -1,0 +1,22 @@
+name: Variables Demo
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  variables-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display application name
+        run: echo "Application Name: ${{ vars.APP_NAME }}"
+
+      - name: Display environment
+        run: echo "Environment: Development"
