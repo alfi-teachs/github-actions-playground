@@ -15,9 +15,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: set environment variables
+      - name: Set environment variable
         run: |
-          echo "APP_ENV=Development" >> $GITHUB_ENV
+          echo "APP_ENV=Development" >> "$GITHUB_ENV"
 
       - name: Read application environment
         run: 'echo "Application Environment: $APP_ENV"'
+
+  output-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create application version
+        id: app
+        run: |
+          echo "version=2.0.0" >> "$GITHUB_OUTPUT"
+
+      - name: Display application version
+        run: 'echo "Application Version: ${{ steps.app.outputs.version }}"'
