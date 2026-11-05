@@ -21,3 +21,13 @@ jobs:
 
       - name: Display environment
         run: 'echo "Environment: Development"'
+            - name: Check secret availability
+        run: |
+          if [ -n "$DEMO_PASSWORD" ]; then
+            echo "Secret is configured successfully"
+          else
+            echo "Secret is missing"
+            exit 1
+          fi
+        env:
+          DEMO_PASSWORD: ${{ secrets.DEMO_PASSWORD }}  
