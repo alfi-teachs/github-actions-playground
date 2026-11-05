@@ -16,7 +16,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Display application name
-        run: echo "Application Name: ${{ vars.APP_NAME }}"
+        run: 'echo "Application Name: ${{ vars.APP_NAME }}"'
+       
 
       - name: Display environment
-        run: echo "Environment: Development"
+        run: 'echo "Environment: Development"'
