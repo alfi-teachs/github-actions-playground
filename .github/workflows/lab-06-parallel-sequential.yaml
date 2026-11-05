@@ -18,6 +18,7 @@ jobs:
         run: echo "Build completed successfully!"
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Run tests
@@ -25,3 +26,17 @@ jobs:
 
       - name: Tests completed
         run: echo "Tests completed successfully!"
+
+  deploy:
+
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Deploy application
+        run: echo "Deploying application..."
+
+      - name: Deployment completed
+        run: echo "Deployment completed successfully!"      
+  
