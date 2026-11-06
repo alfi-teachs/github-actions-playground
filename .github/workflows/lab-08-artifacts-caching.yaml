@@ -13,7 +13,7 @@ jobs:
 
       - name: create build file
         run: 
-              mkdir -p build 
+              mkdir -p build &&
               echo "This is a build artifact" > build/app.txt
 
       - name: Upload build artifact
