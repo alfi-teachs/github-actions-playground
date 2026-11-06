@@ -1,0 +1,24 @@
+name: Artifacts and Caching Workflow 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: create build file
+        run: 
+              mkdir -p build 
+              echo "This is a build artifact" > build/app.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: applicaation-build
+          path: build/app.txt      
+     
