@@ -21,4 +21,17 @@ jobs:
         with:
           name: applicaation-build
           path: build/app.txt      
-     
+  download-artifact:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: applicaation-build
+          path: downloaded-artifact
+
+      - name: Display downloaded artifact
+        run: cat downloaded-artifact/app.txt
